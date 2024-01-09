@@ -1,0 +1,49 @@
+<div class="product-container">
+  <div class="image">
+    <img src="https://i.ibb.co/Yd2Z16g/International-Women-s-Day-Facebook-Post.png" alt="International-Women-s-Day-Facebook-Post" border="0" />
+  </div>
+  <div class="details">
+    <h1 class="cost">$200</h1>
+    <h3 class="title">Adidas Ultraboost 22</h3>
+  </div>
+</div>
+<div class="card-container">
+  <div class="mastercard">
+    <div class="logo"></div>
+    <div class="name"> <?php echo $_SESSION['pelanggan']['nama_pelanggan'] ?> </div>
+  </div>
+  <div class="card-details">
+    <div class="card-number field">
+      <label for="cn"><?php echo $_SESSION['pelanggan']['telepon'] ?></label>
+      <input id="cn" type="text" />
+    </div>
+    <div class="card-name field">
+        <select class="form-control" name="id_ongkir" onchange="cek_database()" id="id_prov">
+            <option value="">-Pilih Provinsi-</option>
+            <?php 
+              $ambil = $koneksi->query("SELECT * FROM provinsi"); ;
+              while($pecah = $ambil->fetch_assoc()) {
+            ?>
+            <option value="<?= $pecah['id_prov'] ?>" ><?= $pecah['nama']; ?> </option>
+            
+            <?php } ?>
+          </select>
+    </div>
+    <div class="expires field">
+      <label for="exp">EXPIRES</label>
+      <input id="exp" type="text" />
+    </div>
+    <div class="cvc field">
+      <label for="cvc">CVC</label>
+      <input id="cvc" type="text" />
+    </div>
+  </div>
+  <button class="purchase-button" data-content="PURCHASE">PURCHASE</button>
+</div>
+<link rel="stylesheet" type="text/css" href="admin/css/global.css">
+
+    <title>PEKA-Checkout</title>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
